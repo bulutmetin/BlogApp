@@ -1,0 +1,29 @@
+﻿@model LoginViewModel
+
+<div class="sidenav">
+    <div class="login-main-text">
+        <h2>Application<br> Login Page</h2>
+        <p>Login or register from here to access.</p>
+    </div>
+</div>
+<div class="main">
+    <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+            <form asp-controller="Users" asp-action="Login" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" type="text" class="form-control" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                </div>
+                <br />
+                <button type="submit" class="btn btn-black">Login</button>
+                <a href="/Users/register" class="btn btn-secondary">Register</a>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,11 @@
+﻿@model Article
+
+<p>
+    <b>@Model.Title</b> makalesini silmek istediğinize emin misiniz ?
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" value="@Model.ArticleId="id">
+        <button type="submit" class="btn btn-danger">Evet</button>
+        <a asp-action="List" class="btn btn-primary">Hayır</a>
+    </form>
+</p>

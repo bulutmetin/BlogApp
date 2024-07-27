@@ -1,0 +1,43 @@
+﻿@model List<Tag>
+
+<div class="card card-body my-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-11">
+                <select class="form-select" id="tagSelector" name="tag">
+                    <option value="0">Hepsi</option>
+                    @foreach (var tag in Model)
+                    {
+                        <option value="@tag.Url">@tag.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-1">
+                <button type="button" id="filterButton" class="btn btn-secondary">Filtrele</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var savedTag = sessionStorage.getItem('selectedTag');
+        if (savedTag) {
+            document.getElementById('tagSelector').value = savedTag;
+        }
+    });
+
+    document.getElementById('filterButton').addEventListener('click', function () {
+
+        var selectedValue = document.getElementById('tagSelector').value;
+        sessionStorage.setItem('selectedTag', selectedValue);
+
+        if (selectedValue === '0') {
+            window.location.href = '/';
+        }
+        else if (selectedValue) {
+            window.location.href = '/articles/tag/' + selectedValue;
+        }
+    });
+</script>

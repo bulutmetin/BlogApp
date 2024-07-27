@@ -1,0 +1,38 @@
+﻿@model ArticleViewModel
+
+
+
+<vc:tags-menu></vc:tags-menu>
+
+<div class="row">
+    <div class="col-lg-8">
+
+        <div class="bg-white p-4">
+            <h1 class="h4 mb-4">Popular Articles</h1>
+            <div class="row">
+                @foreach (var article in Model.Articles)
+                {
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-img-top-container d-flex align-items-center">
+                                <img src="~/img/@article.Image" class="card-img-top" alt=" " />
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="/articles/details/@article.Url" class="btn btn-link">@article.Title</a>
+                                </h5>
+                                <p class="card-text">@(article.Description.Length > 40 ? article.Description.Substring(0, 40) + "..." : article.Description)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <vc:new-articles></vc:new-articles>
+    </div>
+</div>
